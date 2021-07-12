@@ -13,6 +13,9 @@
 #include <sstream>
 #include <iomanip>
 
+#include <linux/serial.h>
+#include <sys/ioctl.h>
+
 #include "../errors/error.hpp"
 #include "../misc.hpp"
 #include "../instruction_packet.hpp"
@@ -116,6 +119,11 @@ namespace dynamixel {
                 cfgetispeed(&tio_serial);
                 tcflush(_fd, TCIFLUSH);
                 tcsetattr(_fd, TCSANOW, &tio_serial);
+
+                struct serial_struct serial_setting;
+                ioctl(_fd, TIOCGSERIAL, &serial_setting);
+                serial_setting.flags |= ASYNC_LOW_LATENCY;
+                ioctl(_fd, TIOCSSERIAL, &serial_setting);
             }
 
             void close_serial()
