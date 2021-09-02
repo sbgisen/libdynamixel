@@ -174,6 +174,17 @@ namespace dynamixel {
             // READ_FIELD(current);
             READ_FIELD(speed_trajectory);
             READ_FIELD(position_trajectory);
+
+            // rebooting functions only for Protocol2
+            static inline InstructionPacket<protocol_t> reboot(typename Servo<Model>::protocol_t::id_t id)
+            {
+                return reboot_t(id);
+            }
+
+            InstructionPacket<protocol_t> reboot() const override
+            {
+                return reboot_t(this->_id);
+            }
         };
     }
 }
