@@ -170,6 +170,11 @@ namespace dynamixel {
                 throw errors::Error("ping not implemented in model");
             }
 
+            virtual InstructionPacket<protocol_t> reboot() const
+            {
+                throw errors::Error("reboot not implemented in model");
+            }
+
             // =================================================================
             // Position-specific
 

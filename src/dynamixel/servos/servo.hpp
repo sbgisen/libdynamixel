@@ -93,6 +93,7 @@ namespace dynamixel {
             typedef typename ModelTraits<Model>::protocol_t protocol_t;
             typedef typename ModelTraits<Model>::CT ct_t;
             typedef instructions::Ping<protocol_t> ping_t;
+            typedef instructions::Reboot<dynamixel::protocols::Protocol2> reboot_t;
             typedef instructions::Read<protocol_t> read_t;
             typedef instructions::Write<protocol_t> write_t;
             typedef instructions::RegWrite<protocol_t> reg_write_t;

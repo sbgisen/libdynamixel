@@ -110,6 +110,17 @@ namespace dynamixel {
             READ_FIELD(present_load);
             READ_FIELD(hardware_error_status);
             READ_WRITE_FIELD(punch);
+
+            // rebooting functions only for Protocol2
+            static inline InstructionPacket<protocol_t> reboot(typename Servo<Model>::protocol_t::id_t id)
+            {
+                return reboot_t(id);
+            }
+
+            InstructionPacket<protocol_t> reboot() const override
+            {
+                return reboot_t(this->_id);
+            }
         };
     }
 }
