@@ -7,7 +7,7 @@ import os
 import glob
 
 VERSION = '0.0.2'
-APPNAME = 'dynamixel-demos'
+APPNAME = 'libdynamixel'
 
 srcdir = '.'
 blddir = 'build'
