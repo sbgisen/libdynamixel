@@ -172,6 +172,20 @@ namespace dynamixel {
                 return reg_goal_position(id, pos);
             }
 
+            static inline InstructionPacket<protocol_t> reg_multi_turn_goal_position_angle(typename Servo<Model>::protocol_t::id_t id, double rad)
+            {
+                double deg = rad * 57.2958;
+                if (!(deg >= -92160 && deg <= 92160))  // 256 * 360
+                    throw errors::ServoLimitError(
+                        id,
+                        -92160.0 * 0.01745,
+                        92160.0 * 0.01745,
+                        rad
+                        );
+                typename ct_t::goal_position_t pos = deg * 11.37778; // * 360 / 4096
+                return reg_goal_position(id, pos);
+            }
+
             InstructionPacket<protocol_t> set_goal_position_angle(double rad) const override
             {
                 return Model::set_goal_position_angle(this->_id, rad);
@@ -180,6 +194,10 @@ namespace dynamixel {
             InstructionPacket<protocol_t> reg_goal_position_angle(double rad) const override
             {
                 return Model::reg_goal_position_angle(this->_id, rad);
+            }
+
+            InstructionPacket<protocol_t> reg_multi_turn_goal_position_angle(double rad) const override {
+                return Model::reg_multi_turn_goal_position_angle(this->_id, rad);
             }
 
             static InstructionPacket<typename Servo<Model>::protocol_t> get_present_position_angle(typename Servo<Model>::protocol_t::id_t id)
