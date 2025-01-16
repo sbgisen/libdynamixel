@@ -175,11 +175,12 @@ namespace dynamixel {
             static inline InstructionPacket<protocol_t> reg_multi_turn_goal_position_angle(typename Servo<Model>::protocol_t::id_t id, double rad)
             {
                 double deg = rad * 57.2958;
-                if (!(deg >= -92160 && deg <= 92160))  // 256 * 360
+                const double limit = 92160.0; // 256 * 360
+                if (!(deg >= -limit && deg <= limit))  // 256 * 360
                     throw errors::ServoLimitError(
                         id,
-                        -92160.0 * 0.01745,
-                        92160.0 * 0.01745,
+                        -limit * 0.01745,
+                        limit * 0.01745,
                         rad
                         );
                 typename ct_t::goal_position_t pos = deg * 11.37778; // * 360 / 4096
