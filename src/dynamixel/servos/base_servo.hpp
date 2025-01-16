@@ -188,6 +188,11 @@ namespace dynamixel {
                 throw errors::Error("reg_goal_position_angle not implemented in model");
             }
 
+            virtual InstructionPacket<protocol_t> reg_multi_turn_goal_position_angle(double rad) const
+            {
+                throw errors::Error("reg_multi_turn_goal_position_angle not implemented in model");
+            }
+
             virtual InstructionPacket<protocol_t> get_present_position_angle() const
             {
                 throw errors::Error("get_present_position_angle not implemented in model");

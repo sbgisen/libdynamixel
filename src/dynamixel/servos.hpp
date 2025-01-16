@@ -22,6 +22,7 @@
 #include "servos/xh430_w350.hpp"
 #include "servos/xh430_v210.hpp"
 #include "servos/xh430_v350.hpp"
+#include "servos/xh540_w150.hpp"
 #include "servos/pro_h54_200_s500.hpp"
 #include "servos/pro_h54_100_s500.hpp"
 #include "servos/pro_h42_20_s300.hpp"
