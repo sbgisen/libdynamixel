@@ -183,7 +183,7 @@ namespace dynamixel {
                         limit * 0.01745,
                         rad
                         );
-                typename ct_t::goal_position_t pos = deg * 11.37778; // * 360 / 4096
+                typename ct_t::goal_position_t pos = deg * 11.37778;  // * resolution [pulse/rev] / 360 deg
                 return reg_goal_position(id, pos);
             }
 
