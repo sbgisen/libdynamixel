@@ -7,7 +7,7 @@ import os
 import glob
 
 VERSION = '0.0.2'
-APPNAME = 'dynamixel-demos'
+APPNAME = 'libdynamixel'
 
 srcdir = '.'
 blddir = 'build'
@@ -50,3 +50,10 @@ def build(bld):
         k = os.path.split(i)
         d = os.path.split(k[0])
         bld.install_files('${PREFIX}/include/' + d[1], i)
+
+def checkinstall (ctx):
+    ctx.exec_command('checkinstall' +
+     ' --pkgname=' + APPNAME + ' --pkgversion=' + VERSION +
+     ' --provides=' + APPNAME + ' --requires=dockbarx' +
+     ' --deldoc=yes --deldesc=yes --delspec=yes --backup=no' +
+     ' --exclude=/home -si -y ./waf install')

@@ -14,13 +14,19 @@ Compilation and installation
 ============================
 The build system for this library is Waf. Don't run away yet. It has the big advantage of requiring no more than Python installed on your computer. If you run a GNU/Linux OS or Mac OS, you should already have it. Here is how we compile and install it:
 
-1. configuration  
+1. Install dependent packages
+  ```
+  sudo add-apt-repository ppa:xuzhen666/dockbarx
+  sudo apt install dockbarx
+  ```
+2. configuration  
   run `./waf configure` and add `--prefix PATH/TO/INSTALL` if you want to install it to a specific location
-2. compilation  
+3. compilation  
   is as easy as `./waf`
-3. installation  
-  is simply done with `./waf install`, with the required rights (might need sudo if you install globally)
-4. setup the proper authorisation  
+4. installation  
+  On Debian, Ubuntu : run `sudo ./waf checkinstall`  
+  Others: is simply done with `./waf install`, with the required rights (might need sudo if you install globally)
+5. setup the proper authorisation  
   please ensure that you have the proper rights to access the serial interfaces. On GNU/Linux, you might have to add your user to the `dialout` group and log out.
 
 udev rule for USB2AX adapter
